@@ -395,218 +395,488 @@
                 font-size: 1.1rem;
             }
         }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header id="header">
-        <nav>
-            <a href="#home" class="logo">Oscar Cruz</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#about">Sobre mí</a></li>
-                <li><a href="#services">Servicios</a></li>
-                <li><a href="#portfolio">Portafolio</a></li>
-                <li><a href="#social">Redes</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-            <div class="mobile-menu" id="mobileMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="profile-container">
-                <div class="profile-img">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Oscar Cruz">
-                </div>
-            </div>
+
+           /* Portfolio Section Styles */
+        .portfolio-section {
+            background: 
+                linear-gradient(135deg, #000000 0%, #0a0000 50%, #000000 100%),
+                radial-gradient(circle at 30% 30%, rgba(255, 0, 0, 0.05) 0%, transparent 50%);
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            border-color: #ff0000;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 0, 0, 0.3);
+            box-shadow: 
+                0 20px 60px rgba(255, 0, 0, 0.2),
+                0 0 100px rgba(255, 0, 0, 0.1);
+        }
+
+        .portfolio-item.featured {
+            border: 2px solid #ff0000;
+            background: rgba(255, 0, 0, 0.08);
+        }
+
+        .featured-label {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 3;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .portfolio-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+            color: white;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-placeholder.tiktok {
+            background: linear-gradient(135deg, #ff0050 0%, #000000 100%);
+        }
+
+        .portfolio-placeholder.facebook {
+            background: linear-gradient(135deg, #1877f2 0%, #000000 100%);
+        }
+
+        .portfolio-placeholder.fitness {
+            background: linear-gradient(135deg, #ff6b35 0%, #000000 100%);
+        }
+
+        .portfolio-placeholder.tech {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .portfolio-placeholder.consulting {
+            background: linear-gradient(135deg, #0077b5 0%, #000000 100%);
+        }
+
+        .portfolio-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .portfolio-placeholder span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover .portfolio-placeholder {
+            transform: scale(1.05);
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-content h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-content p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.5rem 0;
+            gap: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-number {
+            display: block;
+            color: #ff0000;
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .stat-label {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+            font-weight: 500;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff0000;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        /* Social Media Section Styles */
+        .social-section {
+            background: 
+                radial-gradient(ellipse at center, #1a0000 0%, #000000 70%),
+                linear-gradient(45deg, transparent 30%, rgba(255, 0, 0, 0.03) 50%, transparent 70%);
+        }
+
+        .social-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .social-stat {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-stat:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 0, 0, 0.3);
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.1);
+        }
+
+        .social-stat .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ff0000;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-stat .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .social-platforms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 4rem 0;
+        }
+
+        .social-platform {
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            gap: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-platform::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .social-platform:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255, 0, 0, 0.15);
+        }
+
+        .social-platform:hover::before {
+            left: 100%;
+        }
+
+        .social-platform.instagram:hover {
+            border-color: #e4405f;
+            box-shadow: 0 20px 60px rgba(228, 64, 95, 0.2);
+        }
+
+        .social-platform.facebook:hover {
+            border-color: #1877f2;
+            box-shadow: 0 20px 60px rgba(24, 119, 242, 0.2);
+        }
+
+        .social-platform.tiktok:hover {
+            border-color: #ff0050;
+            box-shadow: 0 20px 60px rgba(255, 0, 80, 0.2);
+        }
+
+        .social-platform.linkedin:hover {
+            border-color: #0077b5;
+            box-shadow: 0 20px 60px rgba(0, 119, 181, 0.2);
+        }
+
+        .platform-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .instagram .platform-icon {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: white;
+        }
+
+        .facebook .platform-icon {
+            background: #1877f2;
+            color: white;
+        }
+
+        .tiktok .platform-icon {
+            background: linear-gradient(45deg, #ff0050, #000000);
+            color: white;
+        }
+
+        .linkedin .platform-icon {
+            background: #0077b5;
+            color: white;
+        }
+
+        .platform-content {
+            flex: 1;
+        }
+
+        .platform-content h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .platform-handle {
+            color: #ff0000;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .platform-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .platform-stats {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .platform-followers,
+        .platform-engagement {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+        }
+
+        .platform-arrow {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-platform:hover .platform-arrow {
+            color: #ff0000;
+            transform: translateX(5px);
+        }
+
+        .social-cta {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 3rem;
+            background: rgba(255, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 25px;
+        }
+
+        .social-cta h3 {
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .social-cta p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive Design for Part 3 */
+        @media (max-width: 968px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
             
-            <h1 class="hero-title">Oscar Mauricio Cruz Figueroa</h1>
-            <p class="hero-subtitle">Community Manager</p>
-            <p class="hero-description">
-                Especialista en gestión de redes sociales y creación de contenido digital. 
-                Transformo ideas en historias que conectan marcas con audiencias, 
-                generando engagement auténtico y resultados medibles.
-            </p>
+            .social-platforms {
+                grid-template-columns: 1fr;
+            }
 
-            <div class="hero-slogan">
-                <p class="hero-slogan-text">
-                    <span class="hero-slogan-quote">"</span>
-                    Convirtiendo seguidores en comunidad, y comunidad en resultados
-                    <span class="hero-slogan-quote">"</span>
-                </p>
-            </div>
+            .portfolio-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
 
-            <div class="hero-cta">
-                <a href="#contact" class="cta-button cta-primary">
-                    <i class="fas fa-rocket"></i>
-                    Trabajemos Juntos
-                </a>
-                <a href="#portfolio" class="cta-button cta-secondary">
-                    <i class="fas fa-eye"></i>
-                    Ver Mi Trabajo
-                </a>
-            </div>
-        </div>
+        @media (max-width: 768px) {
+            .portfolio-filters {
+                justify-content: center;
+            }
 
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-            <small>Desliza para conocer más</small>
-        </div>
-    </section>
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">Sobre mí</h2>
-            <div class="about-content">
-                <div class="about-image-container">
-                    <div class="about-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=500&h=600&fit=crop" alt="Oscar Cruz Profesional" class="about-img">
-                        <div class="about-img-overlay"></div>
-                    </div>
-                    <div class="experience-badge">
-                        <span class="experience-number">3+</span>
-                        <span class="experience-text">Años de<br>Experiencia</span>
-                    </div>
-                </div>
-                
-                <div class="about-text">
-                    <h3 class="about-subtitle">¿Quién soy?</h3>
-                    <p>Soy <strong>Oscar Mauricio Cruz Figueroa</strong>, un apasionado Community Manager con más de 3 años de experiencia transformando la presencia digital de marcas y empresas.</p>
-                    
-                    <p>Mi especialidad está en <span class="highlight">crear estrategias de contenido</span> que no solo generan engagement, sino que construyen comunidades sólidas y leales. He trabajado con empresas de diversos sectores, desde startups tecnológicas hasta marcas de retail.</p>
-                    
-                    <div class="skills-container">
-                        <h4>Mis fortalezas:</h4>
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Estrategia Digital</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-palette"></i>
-                                <span>Diseño Creativo</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-users"></i>
-                                <span>Community Building</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-bullhorn"></i>
-                                <span>Marketing Digital</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <p>Creo firmemente que cada red social tiene su propio lenguaje y personalidad. Por eso, adapto cada estrategia para maximizar el potencial de cada plataforma, ya sea Instagram, Facebook, TikTok o LinkedIn.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            .social-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
 
-    <!-- Services Section -->
-    <section id="services" class="section services-section">
-        <div class="container">
-            <h2 class="section-title">Mis Servicios</h2>
-            <p class="section-subtitle">Soluciones digitales completas para hacer crecer tu marca</p>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon-container">
-                        <i class="fab fa-instagram service-icon"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Gestión de Redes Sociales</h3>
-                    <p>Administración completa de tus perfiles en Instagram, Facebook, TikTok y LinkedIn. Programación estratégica, interacción auténtica y análisis detallado de métricas.</p>
-                    <div class="service-features">
-                        <span class="feature">• Programación de contenido</span>
-                        <span class="feature">• Community management</span>
-                        <span class="feature">• Análisis de métricas</span>
-                    </div>
-                </div>
-                
-                <div class="service-card featured">
-                    <div class="featured-badge">Más Popular</div>
-                    <div class="service-icon-container">
-                        <i class="fas fa-pen-fancy service-icon"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Creación de Contenido</h3>
-                    <p>Desarrollo de contenido visual y textual original que conecta con tu audiencia. Posts, stories, reels, videos y copy persuasivo adaptado a cada plataforma.</p>
-                    <div class="service-features">
-                        <span class="feature">• Contenido visual atractivo</span>
-                        <span class="feature">• Copy persuasivo</span>
-                        <span class="feature">• Video marketing</span>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon-container">
-                        <i class="fas fa-palette service-icon"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Diseño Gráfico Digital</h3>
-                    <p>Creación de diseños modernos y atractivos para redes sociales. Posts, banners, stories templates y elementos gráficos que refuerzan tu identidad visual.</p>
-                    <div class="service-features">
-                        <span class="feature">• Diseños personalizados</span>
-                        <span class="feature">• Templates reutilizables</span>
-                        <span class="feature">• Branding coherente</span>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon-container">
-                        <i class="fas fa-bullhorn service-icon"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Campañas Digitales</h3>
-                    <p>Diseño e implementación de campañas publicitarias efectivas. Optimización de anuncios, segmentación precisa y seguimiento de ROI para maximizar resultados.</p>
-                    <div class="service-features">
-                        <span class="feature">• Facebook & Instagram Ads</span>
-                        <span class="feature">• Optimización de ROI</span>
-                        <span class="feature">• Segmentación avanzada</span>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon-container">
-                        <i class="fas fa-chart-line service-icon"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Análisis y Reportes</h3>
-                    <p>Monitoreo detallado de métricas clave, análisis de rendimiento y reportes profesionales con insights accionables para mejorar constantemente la estrategia.</p>
-                    <div class="service-features">
-                        <span class="feature">• Reportes mensuales</span>
-                        <span class="feature">• Análisis de competencia</span>
-                        <span class="feature">• KPIs personalizados</span>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon-container">
-                        <i class="fas fa-users service-icon"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Community Building</h3>
-                    <p>Construcción y gestión de comunidades online sólidas. Fomento del engagement auténtico y desarrollo de relaciones duraderas con tu audiencia.</p>
-                    <div class="service-features">
-                        <span class="feature">• Estrategias de engagement</span>
-                        <span class="feature">• Gestión de crisis</span>
-                        <span class="feature">• Fidelización de usuarios</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            .social-stat {
+                padding: 1.5rem;
+            }
 
-    <style>
+            .social-stat .stat-number {
+                font-size: 2rem;
+            }
+
+            .social-platform {
+                padding: 1.5rem;
+            }
+
+            .social-cta {
+                margin-top: 3rem;
+                padding: 2rem;
+            }
+
+            .social-cta h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-item {
+                margin: 0
+
+
         /* General Styles for Part 2 */
         .section {
             padding: 100px 0;
@@ -1012,8 +1282,546 @@
                 text-align: left;
             }
         }
-    </style>
 
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="#home" class="logo">Oscar Cruz</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#portfolio">Portafolio</a></li>
+                <li><a href="#social">Redes</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="profile-container">
+                <div class="profile-img">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Oscar Cruz">
+                </div>
+            </div>
+            
+            <h1 class="hero-title">Oscar Mauricio Cruz Figueroa</h1>
+            <p class="hero-subtitle">Community Manager</p>
+            <p class="hero-description">
+                Especialista en gestión de redes sociales y creación de contenido digital. 
+                Transformo ideas en historias que conectan marcas con audiencias, 
+                generando engagement auténtico y resultados medibles.
+            </p>
+
+            <div class="hero-slogan">
+                <p class="hero-slogan-text">
+                    <span class="hero-slogan-quote">"</span>
+                    Convirtiendo seguidores en comunidad, y comunidad en resultados
+                    <span class="hero-slogan-quote">"</span>
+                </p>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#contact" class="cta-button cta-primary">
+                    <i class="fas fa-rocket"></i>
+                    Trabajemos Juntos
+                </a>
+                <a href="#portfolio" class="cta-button cta-secondary">
+                    <i class="fas fa-eye"></i>
+                    Ver Mi Trabajo
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+            <small>Desliza para conocer más</small>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Sobre mí</h2>
+            <div class="about-content">
+                <div class="about-image-container">
+                    <div class="about-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=500&h=600&fit=crop" alt="Oscar Cruz Profesional" class="about-img">
+                        <div class="about-img-overlay"></div>
+                    </div>
+                    <div class="experience-badge">
+                        <span class="experience-number">3+</span>
+                        <span class="experience-text">Años de<br>Experiencia</span>
+                    </div>
+                </div>
+                
+                <div class="about-text">
+                    <h3 class="about-subtitle">¿Quién soy?</h3>
+                    <p>Soy <strong>Oscar Mauricio Cruz Figueroa</strong>, un apasionado Community Manager con más de 3 años de experiencia transformando la presencia digital de marcas y empresas.</p>
+                    
+                    <p>Mi especialidad está en <span class="highlight">crear estrategias de contenido</span> que no solo generan engagement, sino que construyen comunidades sólidas y leales. He trabajado con empresas de diversos sectores, desde startups tecnológicas hasta marcas de retail.</p>
+                    
+                    <div class="skills-container">
+                        <h4>Mis fortalezas:</h4>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Estrategia Digital</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-palette"></i>
+                                <span>Diseño Creativo</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-users"></i>
+                                <span>Community Building</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-bullhorn"></i>
+                                <span>Marketing Digital</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p>Creo firmemente que cada red social tiene su propio lenguaje y personalidad. Por eso, adapto cada estrategia para maximizar el potencial de cada plataforma, ya sea Instagram, Facebook, TikTok o LinkedIn.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+        <div class="container">
+            <h2 class="section-title">Mis Servicios</h2>
+            <p class="section-subtitle">Soluciones digitales completas para hacer crecer tu marca</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon-container">
+                        <i class="fab fa-instagram service-icon"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3>Gestión de Redes Sociales</h3>
+                    <p>Administración completa de tus perfiles en Instagram, Facebook, TikTok y LinkedIn. Programación estratégica, interacción auténtica y análisis detallado de métricas.</p>
+                    <div class="service-features">
+                        <span class="feature">• Programación de contenido</span>
+                        <span class="feature">• Community management</span>
+                        <span class="feature">• Análisis de métricas</span>
+                    </div>
+                </div>
+                
+                <div class="service-card featured">
+                    <div class="featured-badge">Más Popular</div>
+                    <div class="service-icon-container">
+                        <i class="fas fa-pen-fancy service-icon"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3>Creación de Contenido</h3>
+                    <p>Desarrollo de contenido visual y textual original que conecta con tu audiencia. Posts, stories, reels, videos y copy persuasivo adaptado a cada plataforma.</p>
+                    <div class="service-features">
+                        <span class="feature">• Contenido visual atractivo</span>
+                        <span class="feature">• Copy persuasivo</span>
+                        <span class="feature">• Video marketing</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon-container">
+                        <i class="fas fa-palette service-icon"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3>Diseño Gráfico Digital</h3>
+                    <p>Creación de diseños modernos y atractivos para redes sociales. Posts, banners, stories templates y elementos gráficos que refuerzan tu identidad visual.</p>
+                    <div class="service-features">
+                        <span class="feature">• Diseños personalizados</span>
+                        <span class="feature">• Templates reutilizables</span>
+                        <span class="feature">• Branding coherente</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon-container">
+                        <i class="fas fa-bullhorn service-icon"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3>Campañas Digitales</h3>
+                    <p>Diseño e implementación de campañas publicitarias efectivas. Optimización de anuncios, segmentación precisa y seguimiento de ROI para maximizar resultados.</p>
+                    <div class="service-features">
+                        <span class="feature">• Facebook & Instagram Ads</span>
+                        <span class="feature">• Optimización de ROI</span>
+                        <span class="feature">• Segmentación avanzada</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon-container">
+                        <i class="fas fa-chart-line service-icon"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3>Análisis y Reportes</h3>
+                    <p>Monitoreo detallado de métricas clave, análisis de rendimiento y reportes profesionales con insights accionables para mejorar constantemente la estrategia.</p>
+                    <div class="service-features">
+                        <span class="feature">• Reportes mensuales</span>
+                        <span class="feature">• Análisis de competencia</span>
+                        <span class="feature">• KPIs personalizados</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon-container">
+                        <i class="fas fa-users service-icon"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3>Community Building</h3>
+                    <p>Construcción y gestión de comunidades online sólidas. Fomento del engagement auténtico y desarrollo de relaciones duraderas con tu audiencia.</p>
+                    <div class="service-features">
+                        <span class="feature">• Estrategias de engagement</span>
+                        <span class="feature">• Gestión de crisis</span>
+                        <span class="feature">• Fidelización de usuarios</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section portfolio-section">
+        <div class="container">
+            <h2 class="section-title">Mi Portafolio</h2>
+            <p class="section-subtitle">Algunos de mis trabajos más destacados y casos de éxito</p>
+            
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="instagram">Instagram</button>
+                <button class="filter-btn" data-filter="tiktok">TikTok</button>
+                <button class="filter-btn" data-filter="facebook">Facebook</button>
+                <button class="filter-btn" data-filter="campaigns">Campañas</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="instagram">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <i class="fab fa-instagram"></i>
+                            <span>Campaña Instagram</span>
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Marca de Moda Urbana</h3>
+                        <p>Estrategia completa para marca de ropa, incrementando el engagement en un <strong>150%</strong> y las ventas online en un <strong>80%</strong>.</p>
+                        <div class="portfolio-stats">
+                            <div class="stat">
+                                <span class="stat-number">150%</span>
+                                <span class="stat-label">Engagement</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">25K</span>
+                                <span class="stat-label">Seguidores</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">80%</span>
+                                <span class="stat-label">Ventas</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-tags">
+                            <span class="tag">Content Strategy</span>
+                            <span class="tag">Visual Design</span>
+                            <span class="tag">Instagram Growth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item featured" data-category="tiktok">
+                    <div class="featured-label">Proyecto Destacado</div>
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder tiktok">
+                            <i class="fab fa-tiktok"></i>
+                            <span>Viral TikTok</span>
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Restaurante Local - Viral Strategy</h3>
+                        <p>Creación de contenido viral para restaurante local, alcanzando <strong>2M+</strong> visualizaciones y aumentando visitas físicas en un <strong>200%</strong>.</p>
+                        <div class="portfolio-stats">
+                            <div class="stat">
+                                <span class="stat-number">2M+</span>
+                                <span class="stat-label">Views</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">50K</span>
+                                <span class="stat-label">Shares</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">200%</span>
+                                <span class="stat-label">Visitas</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-tags">
+                            <span class="tag">Viral Marketing</span>
+                            <span class="tag">Video Content</span>
+                            <span class="tag">Local Business</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="facebook campaigns">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder facebook">
+                            <i class="fab fa-facebook"></i>
+                            <span>Facebook Ads</span>
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>E-commerce - Campaña Publicitaria</h3>
+                        <p>Optimización de campañas publicitarias para tienda online, reduciendo el costo por conversión en un <strong>40%</strong> y mejorando el ROAS.</p>
+                        <div class="portfolio-stats">
+                            <div class="stat">
+                                <span class="stat-number">4.2x</span>
+                                <span class="stat-label">ROAS</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">40%</span>
+                                <span class="stat-label">↓ CPC</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">300+</span>
+                                <span class="stat-label">Conversiones</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-tags">
+                            <span class="tag">Facebook Ads</span>
+                            <span class="tag">E-commerce</span>
+                            <span class="tag">ROI Optimization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="instagram">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder fitness">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>Fitness Coach</span>
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Coach Personal - Brand Design</h3>
+                        <p>Desarrollo de identidad visual completa y templates para stories, mejorando la consistencia de marca y el engagement.</p>
+                        <div class="portfolio-stats">
+                            <div class="stat">
+                                <span class="stat-number">120%</span>
+                                <span class="stat-label">Engagement</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Templates</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">15K</span>
+                                <span class="stat-label">Seguidores</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-tags">
+                            <span class="tag">Brand Design</span>
+                            <span class="tag">Templates</span>
+                            <span class="tag">Fitness</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="campaigns">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder tech">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Startup EdTech</span>
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Startup Educativa - Reels Series</h3>
+                        <p>Serie de reels educativos para startup de educación tecnológica, alcanzando <strong>500K+</strong> reproducciones promedio por video.</p>
+                        <div class="portfolio-stats">
+                            <div class="stat">
+                                <span class="stat-number">500K+</span>
+                                <span class="stat-label">Views/Video</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">30+</span>
+                                <span class="stat-label">Reels</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">85%</span>
+                                <span class="stat-label">Retention</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-tags">
+                            <span class="tag">Educational Content</span>
+                            <span class="tag">Reels Strategy</span>
+                            <span class="tag">Tech Startup</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="facebook campaigns">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder consulting">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Consultoría B2B</span>
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Consultoría B2B - LinkedIn Strategy</h3>
+                        <p>Posicionamiento de consultora tecnológica como thought leader en LinkedIn, generando <strong>50+</strong> leads calificados mensualmente.</p>
+                        <div class="portfolio-stats">
+                            <div class="stat">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Leads/Mes</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">300%</span>
+                                <span class="stat-label">↑ Conexiones</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">25K</span>
+                                <span class="stat-label">Impresiones</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-tags">
+                            <span class="tag">B2B Strategy</span>
+                            <span class="tag">LinkedIn</span>
+                            <span class="tag">Lead Generation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social" class="section social-section">
+        <div class="container">
+            <h2 class="section-title">Conectemos en Redes</h2>
+            <p class="section-subtitle">Sígueme para ver mi trabajo diario y tips exclusivos de marketing digital</p>
+            
+            <div class="social-stats">
+                <div class="social-stat">
+                    <span class="stat-number">25K+</span>
+                    <span class="stat-label">Seguidores Totales</span>
+                </div>
+                <div class="social-stat">
+                    <span class="stat-number">1M+</span>
+                    <span class="stat-label">Impresiones Mensuales</span>
+                </div>
+                <div class="social-stat">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">Proyectos Completados</span>
+                </div>
+                <div class="social-stat">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Clientes Satisfechos</span>
+                </div>
+            </div>
+
+            <div class="social-platforms">
+                <a href="https://instagram.com/cruz_oscarc" class="social-platform instagram" target="_blank">
+                    <div class="platform-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="platform-content">
+                        <h3>Instagram</h3>
+                        <p class="platform-handle">@cruz_oscarc</p>
+                        <p class="platform-description">Contenido visual, behind the scenes y tips diarios</p>
+                        <div class="platform-stats">
+                            <span class="platform-followers">12.5K seguidores</span>
+                            <span class="platform-engagement">8.2% engagement</span>
+                        </div>
+                    </div>
+                    <div class="platform-arrow">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </a>
+
+                <a href="https://facebook.com/oscar.c.cruz" class="social-platform facebook" target="_blank">
+                    <div class="platform-icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <div class="platform-content">
+                        <h3>Facebook</h3>
+                        <p class="platform-handle">Oscar C Cruz</p>
+                        <p class="platform-description">Estrategias profesionales y casos de estudio</p>
+                        <div class="platform-stats">
+                            <span class="platform-followers">8.3K seguidores</span>
+                            <span class="platform-engagement">6.5% engagement</span>
+                        </div>
+                    </div>
+                    <div class="platform-arrow">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </a>
+
+                <a href="https://tiktok.com/@oscar_cruz_2" class="social-platform tiktok" target="_blank">
+                    <div class="platform-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <div class="platform-content">
+                        <h3>TikTok</h3>
+                        <p class="platform-handle">@oscar_cruz_2</p>
+                        <p class="platform-description">Tendencias, contenido viral y tips rápidos</p>
+                        <div class="platform-stats">
+                            <span class="platform-followers">5.2K seguidores</span>
+                            <span class="platform-engagement">12.8% engagement</span>
+                        </div>
+                    </div>
+                    <div class="platform-arrow">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </a>
+
+                <a href="https://linkedin.com/in/oscarcruz-dev" class="social-platform linkedin" target="_blank">
+                    <div class="platform-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="platform-content">
+                        <h3>LinkedIn</h3>
+                        <p class="platform-handle">oscarcruz-dev</p>
+                        <p class="platform-description">Networking profesional y growth hacking</p>
+                        <div class="platform-stats">
+                            <span class="platform-followers">3.1K conexiones</span>
+                            <span class="platform-engagement">15.3% engagement</span>
+                        </div>
+                    </div>
+                    <div class="platform-arrow">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </a>
+            </div>
+
+            <div class="social-cta">
+                <h3>¿Listo para hacer crecer tu marca?</h3>
+                <p>Únete a más de 25,000 personas que confían en mi experiencia</p>
+                <a href="#contact" class="cta-button cta-primary">
+                    <i class="fas fa-rocket"></i>
+                    Empezar Ahora
+                </a>
+            </div>
+        </div>
+    </section>
+
+     
     <script>
         // Header scroll effect
         window.addEventListener('scroll', () => {
